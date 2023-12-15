@@ -1,0 +1,7 @@
+<template>
+  <div>다이어리 작성 뷰</div>
+</template>
+
+<script setup></script>
+
+<style scoped></style>
