@@ -1,7 +1,19 @@
 <template>
-  <div>로그인화면 띄워놓는 main</div>
+  <div class="home-container">
+    로그인화면 띄워놓는 main
+
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
 
-<style scoped></style>
+</script>
+
+<style scoped>
+.home-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+</style>

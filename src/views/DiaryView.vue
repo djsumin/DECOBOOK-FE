@@ -1,7 +1,20 @@
 <template>
-  <div>다이어리 뷰</div>
+  <div class="diary-container">
+    다이어리 뷰
+
+    <RouterView/>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { RouterView } from 'vue-router';
+</script>
 
-<style scoped></style>
+<style scoped>
+.diary-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+</style>
