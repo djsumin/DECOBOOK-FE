@@ -4,7 +4,14 @@
     <div>날짜 : {{ weatherStore.todayStr }}</div>
     <div>
       제목 :
-      <input id="content" type="text" v-model="textarea" />
+      <input id="content" type="text" v-model="title" />
+    </div>
+    <div>
+      <input type="radio" v-model="feelingValues" name="feeling" value="5" />😁
+      <input type="radio" v-model="feelingValues" name="feeling" value="4" />😊
+      <input type="radio" v-model="feelingValues" name="feeling" value="3" />😐
+      <input type="radio" v-model="feelingValues" name="feeling" value="2" />☹️
+      <input type="radio" v-model="feelingValues" name="feeling" value="1" />😩
     </div>
     <div><input type="checkbox" v-model="isImgVisible" />사진 추가하기</div>
     <!--파일업로드부분추가-->
@@ -53,10 +60,12 @@
     </div>
     <div><input type="checkbox" v-model="isMapVisible" />위치 추가하기</div>
     <KakaoMap v-if="isMapVisible" />
+
     <br />
     <hr />
     <br />
-    <div><v-textarea v-model="textarea"></v-textarea></div>
+    <div><textarea v-model="content" class="diaryContent"></textarea></div>
+    <button @click="onRegist">등록하기</button>
   </div>
 </template>
 
@@ -64,6 +73,7 @@
 import { ref } from "vue";
 import { useWeatherStore } from "@/stores/weather";
 import KakaoMap from "@/components/diary/KakaoMap.vue";
+import http from "@/util/http-commons.js";
 
 const weatherStore = useWeatherStore();
 
@@ -71,6 +81,40 @@ const weatherStore = useWeatherStore();
 const isImgVisible = ref(false);
 const isStarVisible = ref(false);
 const isMapVisible = ref(false);
+
+//글 등록
+
+const feelingValues = ref();
+const ratings = ref();
+
+const diary_date = ref();
+const title = ref();
+const content = ref();
+const orgImg = ref();
+const weather = ref();
+const star_score = ref();
+const user_id = ref();
+const latitude = ref();
+const longitude = ref();
+
+const onRegist = () => {
+  console.log("hi");
+  http
+    .post("diary", {
+      diary_date: weatherStore.todayStr.value,
+      title: title.value,
+      diary_content: content.value,
+      orgImg: isImgVisible.value,
+      weather: weatherStore.getWeather.value,
+      feeling: ratings.value,
+      // user_id:
+      // latitude: weatherStore.
+      // longitude: weatherStore.
+    })
+    .then((res) => {
+      console.log(res);
+    });
+};
 </script>
 
 <style scoped>
@@ -112,5 +156,9 @@ const isMapVisible = ref(false);
 .star-rating label:hover,
 .star-rating label:hover ~ label {
   -webkit-text-fill-color: #fff58c;
+}
+.diaryContent {
+  width: 250px;
+  height: 200px;
 }
 </style>
