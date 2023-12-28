@@ -7,7 +7,7 @@ const REST_LEDGER_API = `http://localhost:8080/api/ledger`
 
 export const useLedgerStore = defineStore('ledger', () => {
 
-
+  
   
   return{  }
 

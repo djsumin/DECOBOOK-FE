@@ -33,26 +33,26 @@ const router = createRouter({
       component: DiaryView,
       children: [
         {
-          path: "detail",
-          name: "diaryDetail",
-          component: DiaryDetail,
-        },
-        {
-          path: "",
-          name: "diaryList",
-          component: DiaryList,
-        },
-        {
-          path: "monthly",
-          name: "diaryMonthly",
-          component: DiaryMonthly,
-        },
-        {
           path: "update",
           name: "diaryUpdate",
           component: DiaryUpdate,
         },
-      ],
+      ]
+    },
+    {
+      path: "/detail/:id",
+      name: "diaryDetail",
+      component: DiaryDetail,
+    },
+    {
+      path: "/diarylist",
+      name: "diaryList",
+      component: DiaryList,
+    },
+    {
+      path: "/monthly",
+      name: "diaryMonthly",
+      component: DiaryMonthly,
     },
     {
       path: "/ledger",
@@ -108,5 +108,6 @@ const router = createRouter({
     },
   ],
 });
+
 
 export default router;

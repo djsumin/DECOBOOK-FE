@@ -1,9 +1,15 @@
 <template>
   <div>
-    <TheHeaderNav class="app-header"/>
-    <h2 style="display: flex; justify-content: center;">AppView</h2>
-    <RouterView/>
-    <TheFooterNav class="app-footer"/>
+    <div>
+      <TheHeaderNav class="app-header" />
+    </div>
+    <div>
+      <RouterView />
+    </div>
+    <div>
+      <TheFooterNav class="app-footer" />
+    </div>
+    
   </div>
 </template>
 
@@ -23,6 +29,7 @@ import TheFooterNav from "./components/common/TheFooterNav.vue";
   right: 0;
   z-index: 100;
 }
+
 .app-footer {
   position: fixed;
   width: 100%;
