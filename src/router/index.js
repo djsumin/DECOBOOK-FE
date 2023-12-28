@@ -37,7 +37,7 @@ const router = createRouter({
           name: "diaryUpdate",
           component: DiaryUpdate,
         },
-      ]
+      ],
     },
     {
       path: "/detail/:id",
@@ -91,6 +91,7 @@ const router = createRouter({
         },
       ],
     },
+
     {
       path: "/registDiary",
       name: "registDiary",
@@ -108,6 +109,5 @@ const router = createRouter({
     },
   ],
 });
-
 
 export default router;
