@@ -21,13 +21,12 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import {ref, onMounted, computed,} from "vue";
-import {useWeatherStore} from "@/stores/weather";
+import {useDiaryStore} from "@/stores/diary";
 
-const weatherStore = useWeatherStore(); 
+const diaryStore = useDiaryStore(); 
 
 onMounted(()=>{
-  weatherStore.getToday();
-  weatherStore.getAPIData();
+  diaryStore.getAxiosRecent();
 })
 
 </script>

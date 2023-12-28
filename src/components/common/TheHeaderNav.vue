@@ -4,7 +4,7 @@
             <RouterLink :to="{name: 'diary'}">다이어리</RouterLink> | 
             <RouterLink :to="{name: 'ledger'}">가계부</RouterLink>
         </div>
-        <RouterLink to="/" class="logo"><img src="../../../public/assets/decobook_logo.png" alt=""></RouterLink>
+        <RouterLink to="/" class="logo"><img src="../../../assets/decobook_logo.png" alt=""></RouterLink>
         <div>
             <button>LOGOUT</button>
         </div>

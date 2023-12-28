@@ -7,7 +7,7 @@
   <!-- 페이징 적용 -->
   <div v-for="(diary, index) in diaryStore.getPaginatedDiarylist" :key="diary.dairy_id">
     <!-- 제목과 내용 -->
-    <span>{{ diary.title }}</span> |
+    <span>{{ diary.diary_date }}</span> |
     <span>{{ diary.diary_content }}</span> |
     <span ref="" @click="moveToDetal(diaryStore.getPaginatedDiarylist[index].diary_id)">상세보기</span>
   </div>
@@ -27,7 +27,22 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted, computed, watch } from "vue";
+import { useDiaryStore } from '@/stores/diary'
+import router from "@/router";
+const diaryStore = useDiaryStore();
+const moveToDetal = function (diary_id) {
+  console.log(diary_id)
+  router.push({
+    name: 'diaryDetail',
+    params: { id: diary_id }
+  });
+}
+onMounted(() => {
+  diaryStore.getDiaryList();
+});
+</script>
 
 <style scoped>
 .diary-container {
