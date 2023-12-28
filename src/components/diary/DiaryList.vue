@@ -27,25 +27,7 @@
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted, computed, watch } from "vue";
-import { useDiaryStore } from '@/stores/diary'
-import router from "@/router";
-
-const diaryStore = useDiaryStore();
-
-const moveToDetal = function (diary_id) {
-  console.log(diary_id)
-  router.push({
-    name: 'diaryDetail',
-    params: { id: diary_id}
-  });
-}
-
-onMounted(() => {
-  diaryStore.getDiaryList();
-});
-</script>
+<script setup></script>
 
 <style scoped>
 .diary-container {

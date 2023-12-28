@@ -20,13 +20,14 @@
 
 <script setup>
 import { RouterView } from 'vue-router';
-import { ref, onMounted, computed, } from "vue";
-import { useDiaryStore } from "@/stores/diary";
+import {ref, onMounted, computed,} from "vue";
+import {useWeatherStore} from "@/stores/weather";
 
-const diaryStore = useDiaryStore();
+const weatherStore = useWeatherStore(); 
 
-onMounted(() => {
-  diaryStore.getAxiosRecent();
+onMounted(()=>{
+  weatherStore.getToday();
+  weatherStore.getAPIData();
 })
 
 </script>
