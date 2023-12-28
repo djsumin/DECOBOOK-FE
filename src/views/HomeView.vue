@@ -1,13 +1,10 @@
 <template>
   <div class="home-container">
-    로그인화면 띄워놓는 main
-
+    <h1>로그인화면 띄워놓는 main</h1>
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style scoped>
 .home-container {

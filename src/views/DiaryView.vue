@@ -1,29 +1,28 @@
 <template>
   <div class="diary-container">
-    다이어리 뷰
+    <h1>다이어리 뷰</h1>
 
     <h4>날씨정보</h4>
     <div>기온 : {{ weatherStore.getTemperature }} 도</div>
-    <div>하늘 상태 : {{ weatherStore.getWeather }} </div>
-    <div>강수 형태 : {{ weatherStore.getPty }} </div>
-    <div>강수 확률 : {{ weatherStore.getPop }}% </div>
-
-    <RouterView/>
+    <div>하늘 상태 : {{ weatherStore.getWeather }}</div>
+    <div>강수 형태 : {{ weatherStore.getPty }}</div>
+    <div>강수 확률 : {{ weatherStore.getPop }}%</div>
+    <RouterView />
   </div>
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router';
-import {ref, onMounted, computed,} from "vue";
-import {useWeatherStore} from "@/stores/weather";
+import { RouterView } from "vue-router";
+import { ref, onMounted, computed } from "vue";
+import { useWeatherStore } from "@/stores/weather";
+import DiaryList from "@/components/diary/DiaryList.vue";
 
-const weatherStore = useWeatherStore(); 
+const weatherStore = useWeatherStore();
 
-onMounted(()=>{
+onMounted(() => {
   weatherStore.getToday();
   weatherStore.getAPIData();
-})
-
+});
 </script>
 
 <style scoped>

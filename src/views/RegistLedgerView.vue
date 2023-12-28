@@ -1,5 +1,5 @@
 <template>
-  <div>가계부 작성 뷰</div>
+  <div><h1>가계부 작성 뷰</h1></div>
 </template>
 
 <script setup></script>

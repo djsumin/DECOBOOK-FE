@@ -1,13 +1,13 @@
 <template>
   <div class="ledger-container">
-    가계부 뷰
+    <h1>가계부 뷰</h1>
 
-    <RouterView/>
+    <RouterView />
   </div>
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router';
+import { RouterView } from "vue-router";
 </script>
 
 <style scoped>
