@@ -1,45 +1,53 @@
 <template>
   <div>
     <h1>가계부 작성 뷰</h1>
-    <div>
-      <div>날짜 : {{ weatherStore.todayStr }}</div>
-      <div>
-        <span>수입 / 지출</span>
-        <input type="radio" v-model="income" name="inandout" />수입
-        <input type="radio" v-model="expense" name="inandout" />지출
-      </div>
-      <div class="dropdown">
-        <span>분류</span>
-        <button class="dropbtn">
-          <span class="dropbtn_icon">more_horiz</span>
-          View More
-        </button>
-        <div class="dropdown-content">
-          <a href="#">profile</a>
-          <a href="#">write a post</a>
-          <a href="#">settings</a>
+    <div class="center-container">
+      <div class="container">
+        <div>날짜 : {{ weatherStore.todayStr }}</div>
+        <div>
+          <span>수입 / 지출</span>
+          <input type="radio" v-model="income" name="inandout" />수입
+          <input type="radio" v-model="expense" name="inandout" />지출
         </div>
-      </div>
-      <div>
-        <span>금액</span>
-        <input placeholder="숫자만 입력가능" />원
-      </div>
-      <div>
-        <span>메모</span>
-        <input type="text" placeholder="내용을 입력해주세요" />
+        <div class="dropdown">
+          <span>분류</span>
+          <button class="dropbtn">
+            <span>분류 더보기</span>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">profile</a>
+            <a href="#">write a post</a>
+            <a href="#">settings</a>
+          </div>
+        </div>
+        <div>
+          <span>금액</span>
+          <input placeholder="숫자만 입력가능" type="number" v-model="cost" />원
+        </div>
+        <div>
+          <span>메모</span>
+          <input type="text" placeholder="내용을 입력해주세요" v-model="memo" />
+        </div>
+        <button @click="onRegist()">등록하기</button>
       </div>
     </div>
-    <button @click="onRegist()">목록</button>
   </div>
 </template>
 
 <script setup>
 import router from "@/router";
+import { useLedgerStore } from "@/stores/ledger";
 import { useWeatherStore } from "@/stores/weather";
+
+const store = useLedgerStore();
 
 const weatherStore = useWeatherStore();
 
 const onRegist = function () {
+  // store.ledger.income = income;
+  // store.ledger.expense = expense;
+  // store.ledger.cost = cost;
+  // store.ledger.memo = memo;
   router.push({ name: "ledgerDetail" });
 };
 </script>
@@ -48,26 +56,25 @@ const onRegist = function () {
 h1 {
   text-align: center;
 }
-
+.center-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
-.dropbtn_icon {
-  font-family: "Material Icons";
-}
 .dropbtn {
   border: 1px solid rgb(37, 37, 37);
   border-radius: 4px;
   background-color: #f5f5f5;
   font-weight: 400;
   color: rgb(37, 37, 37);
-  padding: 12px;
-  width: 200px;
+  padding: 3px;
   text-align: left;
   cursor: pointer;
-  font-size: 12px;
 }
 .dropdown-content {
   display: none;
@@ -82,7 +89,6 @@ h1 {
   display: block;
   text-decoration: none;
   color: rgb(37, 37, 37);
-  font-size: 12px;
   padding: 12px 20px;
 }
 
