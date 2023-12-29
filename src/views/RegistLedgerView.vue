@@ -29,14 +29,19 @@
         <input type="text" placeholder="내용을 입력해주세요" />
       </div>
     </div>
-    <button @click="onRegist">등록하기</button>
+    <button @click="onRegist()">목록</button>
   </div>
 </template>
 
 <script setup>
+import router from "@/router";
 import { useWeatherStore } from "@/stores/weather";
 
 const weatherStore = useWeatherStore();
+
+const onRegist = function () {
+  router.push({ name: "ledgerDetail" });
+};
 </script>
 
 <style scoped>

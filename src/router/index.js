@@ -64,34 +64,34 @@ const router = createRouter({
           name: "ledgerCategoryDetail",
           component: LedgerCategoryDetail,
         },
-        {
-          path: "categorylist",
-          name: "ledgerCategoryList",
-          component: LedgerCategoryList,
-        },
-        {
-          path: "detail",
-          name: "ledgerDetail",
-          component: LedgerDetail,
-        },
-        {
-          path: "",
-          name: "ledgerList",
-          component: LedgerList,
-        },
+
         {
           path: "monthly",
           name: "ledgerMonthlyList",
           component: LedgerMonthlyList,
         },
-        {
-          path: "/update",
-          name: "ledgerUpdate",
-          component: LedgerUpdate,
-        },
       ],
     },
-
+    {
+      path: "/ledger/categorylist",
+      name: "ledgerCategoryList",
+      component: LedgerCategoryList,
+    },
+    {
+      path: "/ledger",
+      name: "ledgerList",
+      component: LedgerList,
+    },
+    {
+      path: "/ledger/detail",
+      name: "ledgerDetail",
+      component: LedgerDetail,
+    },
+    {
+      path: "/ledger/update",
+      name: "ledgerUpdate",
+      component: LedgerUpdate,
+    },
     {
       path: "/registDiary",
       name: "registDiary",
