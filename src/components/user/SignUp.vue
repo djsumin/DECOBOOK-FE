@@ -1,5 +1,5 @@
 <template>
-  <div>로그인 뷰</div>
+  <div>회원가입 뷰</div>
 </template>
 
 <script setup></script>
