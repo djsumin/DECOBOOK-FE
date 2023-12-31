@@ -12,12 +12,14 @@
         <div class="dropdown">
           <span>분류</span>
           <button class="dropbtn">
-            <span>분류 더보기</span>
+            <span>{{ selectedCategory || "분류 더보기" }}</span>
           </button>
           <div class="dropdown-content">
-            <a href="#">profile</a>
-            <a href="#">write a post</a>
-            <a href="#">settings</a>
+            <a href="#" @click="selectCategory('식비')">식비</a>
+            <a href="#" @click="selectCategory('카페/간식')">카페/간식</a>
+            <a href="#" @click="selectCategory('생활')">생활</a>
+            <a href="#" @click="selectCategory('온라인 쇼핑')">온라인 쇼핑</a>
+            <a href="#" @click="selectCategory('기타')">기타</a>
           </div>
         </div>
         <div>
@@ -35,6 +37,7 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import router from "@/router";
 import { useLedgerStore } from "@/stores/ledger";
 import { useWeatherStore } from "@/stores/weather";
@@ -43,11 +46,26 @@ const store = useLedgerStore();
 
 const weatherStore = useWeatherStore();
 
+const income = ref("");
+const expense = ref("");
+const cost = ref("");
+const memo = ref("");
+const selectedCategory = ref("");
+
+const selectCategory = (category) => {
+  selectedCategory.value = category;
+};
+
 const onRegist = function () {
-  // store.ledger.income = income;
-  // store.ledger.expense = expense;
-  // store.ledger.cost = cost;
-  // store.ledger.memo = memo;
+  const ledgerData = {
+    income: income.value,
+    expense: expense.value,
+    cost: cost.value,
+    memo: memo.value,
+    selectedCategory: selectedCategory.value,
+  };
+  console.log("ledger-data", ledgerData);
+  store.registLedger(ledgerData);
   router.push({ name: "ledgerDetail" });
 };
 </script>

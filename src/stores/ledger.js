@@ -8,13 +8,6 @@ const REST_LEDGER_API = `http://localhost:8080/api/ledger`;
 export const useLedgerStore = defineStore(
   "ledger",
   () => {
-    let ledger = ref({
-      income: "",
-      expense: "",
-      cost: "",
-      memo: "",
-    });
-
     //등록
     const registLedger = function (Ledger) {
       axios({
@@ -66,7 +59,7 @@ export const useLedgerStore = defineStore(
         method: "DELETE",
         params: { LedgerId: LedgerId },
       })
-        .then(() => router.push("/ledger"))
+        .then(() => router.push({ name: "ledgerList" }))
         .catch((err) => console.log(err));
     };
 
@@ -115,7 +108,6 @@ export const useLedgerStore = defineStore(
     };
 
     return {
-      ledger,
       ledgerList,
       ledgerOne,
       registLedger,

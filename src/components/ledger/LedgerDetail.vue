@@ -33,19 +33,23 @@
 <script setup>
 import router from "@/router";
 import { useWeatherStore } from "@/stores/weather";
+import { useLedgerStore } from "@/stores/ledger";
 
 const weatherStore = useWeatherStore();
+const store = useLedgerStore();
 
 const goList = function () {
   router.push({ name: "ledgerList" });
 };
 
 const onUpdate = function () {
+  store.updateLedger();
   router.push({ name: "ledgerUpdate" });
 };
 
 const goDelete = function () {
-  router.push({ name: "ledgerList" });
+  store.deleteLedger();
+  // router.push({ name: "ledgerList" });
 };
 </script>
 
