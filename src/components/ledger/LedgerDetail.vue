@@ -10,7 +10,7 @@
           <input type="radio" v-model="expense" name="inandout" />지출
         </div>
         <div>
-          <span>분류</span>
+          <span>분류 : {{}}</span>
         </div>
         <div>
           <span>금액</span>

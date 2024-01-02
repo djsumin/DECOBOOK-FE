@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import router from "@/router";
 import axios from "axios";
@@ -13,16 +13,22 @@ export const useLedgerStore = defineStore(
       axios({
         url: REST_LEDGER_API,
         method: "POST",
-        params: Ledger,
+        data: Ledger,
       })
         .then((res) => {
           console.log(res.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.error("Error during POST request:", err);
+          console.error("Response data:", err.response?.data);
+        });
     };
 
     //전체 조회
     const ledgerList = ref([]);
+    const getterList = computed(() => {
+      return ledgerList;
+    });
     const selectLedgerAll = function () {
       axios({
         url: `${REST_LEDGER_API}/`,
@@ -48,7 +54,7 @@ export const useLedgerStore = defineStore(
     const updateLedger = function (Ledger) {
       axios
         .put(REST_LEDGER_API, Ledger)
-        .then(() => router.push(`/legder`))
+        .then(() => router.push({ name: "ledgerList" }))
         .catch((err) => console.log(err));
     };
 
@@ -117,6 +123,7 @@ export const useLedgerStore = defineStore(
       deleteLedger,
       selectLedgerIncome,
       selectLedgerExpenditure,
+      getterList,
     };
   },
   { persist: true }

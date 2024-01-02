@@ -6,8 +6,8 @@
         <div>날짜 : {{ weatherStore.todayStr }}</div>
         <div>
           <span>수입 / 지출</span>
-          <input type="radio" v-model="income" name="inandout" />수입
-          <input type="radio" v-model="expense" name="inandout" />지출
+          <input type="radio" v-model="isIncome" name="inandout" />수입
+          <input type="radio" v-model="isIncome" name="inandout" />지출
         </div>
         <div class="dropdown">
           <span>분류</span>
@@ -46,8 +46,7 @@ const store = useLedgerStore();
 
 const weatherStore = useWeatherStore();
 
-const income = ref("");
-const expense = ref("");
+const isIncome = ref("");
 const cost = ref("");
 const memo = ref("");
 const selectedCategory = ref("");
@@ -58,15 +57,14 @@ const selectCategory = (category) => {
 
 const onRegist = function () {
   const ledgerData = {
-    income: income.value,
-    expense: expense.value,
+    isIncome: isIncome.value,
     cost: cost.value,
     memo: memo.value,
     selectedCategory: selectedCategory.value,
   };
   console.log("ledger-data", ledgerData);
   store.registLedger(ledgerData);
-  router.push({ name: "ledgerDetail" });
+  router.push({ name: "ledgerList" });
 };
 </script>
 
